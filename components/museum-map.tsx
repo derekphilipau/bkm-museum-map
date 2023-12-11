@@ -2,8 +2,6 @@
  * Quick demo of how to implement a dynamic museum map.
  */
 
-import type { CollectionObjectDocument } from '@/types/collectionObjectDocument';
-
 const galleries = [
   {
     id: 'pavilion',
@@ -175,44 +173,28 @@ const galleries = [
   },
 ];
 
-export function MuseumMap({ item }: { item: CollectionObjectDocument }) {
-  if (!item?.museumLocation?.name) return null;
+export function MuseumMap({ locationName }: { locationName: string }) {
+  if (!locationName) return null;
 
-  const gallery = galleries.find(
-    (gallery) => gallery.name === item.museumLocation?.name
-  );
+  const gallery = galleries.find((gallery) => gallery.name === locationName);
 
   if (!gallery) return null;
 
   const myFloor = gallery.floor;
   const myLocation = gallery.imgId;
 
-  function getLinesStyles(floor: number): any {
+  function getLinesClasses(floor: number): string {
     if (floor === myFloor) {
-      return {
-        fill: 'none',
-        stroke: '#000000',
-        strokeWidth: 5.6693,
-        strokeMiterlimit: 10,
-      };
+      return 'fill-none stroke-red-300 dark:stroke-red-800 stroke-[14px]';
     }
-    return {
-      fill: 'none',
-      stroke: '#b7b8b9',
-      strokeWidth: 5.6693,
-      strokeMiterlimit: 10,
-    };
+    return 'fill-none stroke-neutral-300 stroke-[14px] dark:stroke-neutral-800';
   }
 
-  function getFillStyles(location: string): any {
+  function getFillClasses(location: string): string {
     if (location === myLocation) {
-      return {
-        fill: '#FF0000',
-      };
+      return 'fill-red-500';
     }
-    return {
-      fill: '#E5E6E8',
-    };
+    return 'fill-neutral-100 dark:fill-neutral-950';
   }
 
   return (
@@ -222,11 +204,11 @@ export function MuseumMap({ item }: { item: CollectionObjectDocument }) {
       x="0px"
       y="0px"
       viewBox="0 0 2451 4215"
-      className="h-full"
+      className="h-full fill-neutral-100 dark:fill-neutral-950"
     >
       <g id="shadow">
         <path
-          style={{ fill: '#E5E6E8' }}
+          style={{ fill: '' }}
           d="M1427.3,3928.8l-443,255.8l-711-410.5l630.5-364l34.6,20l36.4-21l387.1,223.5l299.6-173l149.8,86.5l254.6-147
             l-53.7-31l194-112l193.1,111.5l-504,291l96.1-12.5l0.1,0c76.6,83.7,53.9,189.8-68.1,260.3c-135.3,78.1-346.5,85.7-496.7,22.8
             L1427.3,3928.8z"
@@ -234,262 +216,262 @@ export function MuseumMap({ item }: { item: CollectionObjectDocument }) {
       </g>
       <g id="_x31__zones">
         <polygon
-          style={getFillStyles('great-hall')}
+          className={getFillClasses('great-hall')}
           points="986,3518 536.6,3777.5 986.9,4037.5 1437.2,3777.5 1361,3733.5 1380.1,3722.5 1081.3,3550 
             1062.3,3561 	"
         />
         <polygon
-          style={getFillStyles('education-studios')}
+          className={getFillClasses('education-studios')}
           points="536.6,3777.5 423.1,3843 872.6,4102.5 986,4037 	"
         />
         <polygon
-          style={getFillStyles('robert-blum-gallery')}
+          className={getFillClasses('robert-blum-gallery')}
           points="1494.4,3874.5 1381.8,3809.5 873.5,4103 986,4168 	"
         />
         <path
-          style={getFillStyles('f1-pavilion')}
+          className={getFillClasses('f1-pavilion')}
           d="M1430.3,3911c140.7,66.3,349.9,63,481.1-12.8c113.7-65.6,139.9-161.7,68.9-239.7l-154.2,24l79.1-45.7
             l-112.6-65l-411.2,237.4l113,65.2L1430.3,3911z"
         />
       </g>
-      <g id="_x31__drawing">
+      <g id="_x31__drawing" className={getLinesClasses(1)}>
         <polyline
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           points="1532.5,3888 1532.5,3852 986,4167.5 302.7,3773 904.6,3425.5 943.6,3448 979.1,3427.5 1316,3622 	"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1351.5"
           y1="3642.5"
           x2="1394.8"
           y2="3667.5"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1426"
           y1="3685.5"
           x2="1434.6"
           y2="3690.5"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1423.4"
           y1="3697"
           x2="1558.5"
           y2="3619"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1362.4"
           y1="3648.8"
           x2="1375.4"
           y2="3641.3"
         />
         <polyline
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           points="1410.4,3621.5 1457.2,3594.5 1529,3636 	"
         />
         <polyline
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           points="1621.7,3582.5 1735.2,3517 1811.4,3561 1736,3604.5 1717.8,3594 	"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1691"
           y1="3578.5"
           x2="1659.8"
           y2="3560.5"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="423.8"
           y1="3842.9"
           x2="940"
           y2="3544.9"
         />
         <polyline
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           points="975.6,3524.5 986.6,3518.2 1006,3507 	"
         />
         <polyline
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           points="1296.1,3674.5 1379.2,3722.5 1388.7,3717 1360.2,3733.5 1380.9,3745.5 	"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1417.3"
           y1="3766.5"
           x2="1465.8"
           y2="3794.5"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="873.5"
           y1="4102.5"
           x2="912.4"
           y2="4080"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="945.3"
           y1="4061"
           x2="1399.1"
           y2="3799"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1417.3"
           y1="3788.5"
           x2="1436.4"
           y2="3777.5"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="976.5"
           y1="4031"
           x2="1028.5"
           y2="4061"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1062.2"
           y1="4080.5"
           x2="1099.5"
           y2="4102"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="943.6"
           y1="4012"
           x2="910.7"
           y2="3993"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="885.6"
           y1="3978.5"
           x2="639.6"
           y2="3836.5"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="612.8"
           y1="3821"
           x2="583.3"
           y2="3804"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="548.7"
           y1="3784"
           x2="537.4"
           y2="3777.5"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="593.9"
           y1="3810.1"
           x2="552.4"
           y2="3834.1"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="519.3"
           y1="3853"
           x2="480.3"
           y2="3875.5"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="931.5"
           y1="4005"
           x2="889.9"
           y2="4029"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="857"
           y1="4048"
           x2="818"
           y2="4070.5"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1154"
           y1="4070.5"
           x2="1116.8"
           y2="4049"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1083"
           y1="4029.5"
           x2="1041.5"
           y2="4005.5"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1493.8"
           y1="3874.3"
           x2="1456.6"
           y2="3852.8"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1422.5"
           y1="3833.5"
           x2="1380.9"
           y2="3809.5"
         />
         <polyline
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           points="986.9,3518 1015.4,3534.5 1062.3,3561.5 1081.3,3550.5 1262.3,3655 	"
         />
         <polyline
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           points="1343.3,3701.8 1247.1,3757.3 985.2,3606 1015.5,3534.5 	"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1194.1"
           y1="3615.6"
           x2="1098"
           y2="3671.1"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1004.2"
           y1="3725"
           x2="1090.8"
           y2="3775"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1137.6"
           y1="3802"
           x2="1035.4"
           y2="3861"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="995.6"
           y1="3884"
           x2="862.2"
           y2="3807"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="815.4"
           y1="3780"
           x2="957.5"
           y2="3698"
         />
         <path
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           d="M1792.6,3571.8l112.6,65l-79.1,45.7l154.2-24c71,78.1,44.8,174.1-68.9,239.7c-131.2,75.7-340.4,79-481.1,12.8"
         />
         <line
-          style={getLinesStyles(1)}
+          className={getLinesClasses(1)}
           x1="1765.5"
           y1="3621.5"
           x2="1822.6"
@@ -498,7 +480,6 @@ export function MuseumMap({ item }: { item: CollectionObjectDocument }) {
       </g>
       <g id="shadow_copy">
         <polyline
-          style={{ fill: '#E5E6E8' }}
           points="1835.1,2878.3 1895.9,2843.2 2399.9,2552.2 2206.8,2440.8 2012.8,2552.8 2066.5,2583.7 
             1811.9,2730.7 1662,2644.3 1362.4,2817.3 975.3,2593.8 938.9,2614.8 904.3,2594.8 273.8,2958.8 984.8,3369.2 1427.8,3113.5 
             1427.3,3113.8 1560.5,3036.9 1606,3063 1874,2901 1835.1,2878.3 	"
@@ -506,41 +487,41 @@ export function MuseumMap({ item }: { item: CollectionObjectDocument }) {
       </g>
       <g id="_x32__zones">
         <path
-          style={getFillStyles('f2-arts-asia')}
+          className={getFillClasses('f2-arts-asia')}
           d="M757.9,3087.8l-220.8-127.5l464.2-268l114.3,66l21.7-12.5l263.3,152l-21.7,12.5l75.3,43.5l-353.3,204l-76.2-44
             l224.3-129.5l0-43.5l-226-130l-75.3,0L723.7,2940l0,44.7l18,10.4l56.1-32.4l88.3,51L757.9,3087.8L757.9,3087.8z"
         />
         <polygon
-          style={getFillStyles('f2-arts-islamic')}
+          className={getFillClasses('f2-arts-islamic')}
           points="1100.8,3157.7 1024.6,3113.8 950.2,3113.8 913.8,3092.8 969.2,3060.8 886.9,3013.3 757.9,3087.8 
             903.4,3171.8 787.3,3238.8 874,3288.7 	"
         />
         <polygon
-          style={getFillStyles('libraries-archives')}
+          className={getFillClasses('libraries-archives')}
           points="1566.8,3018.7 1454.2,2953.7 874,3288.7 986.5,3353.7 	"
         />
       </g>
       <g id="_x32__drawing">
         <polygon
-          style={getLinesStyles(2)}
+          className={getLinesClasses(2)}
           points="899.1,2608.3 1024.6,2680.8 1003,2693.3 1115.6,2758.3 1137.2,2745.8 1400.5,2897.8 1378.8,2910.2 
             1453.4,2953.3 1566.8,3018.7 986.5,3353.7 787.3,3238.8 903.4,3171.8 537.1,2960.3 948.9,2722.5 912.1,2701.3 835,2745.8 
             872.2,2767.3 788.2,2718.8 864.4,2674.8 824.6,2651.8 	"
         />
         <polygon
-          style={getLinesStyles(2)}
+          className={getLinesClasses(2)}
           points="723.3,2985.3 741.5,2995.8 798.6,2962.8 966.6,3059.8 909.5,3092.8 946.7,3114.3 1024.6,3114.2 
             1248.9,2984.8 1248.9,2940.8 1024.6,2811.3 948.4,2811.3 938.9,2816.8 1137.2,2931.3 1100,2952.8 901.7,2838.3 724.1,2940.8 	"
         />
         <line
-          style={getLinesStyles(2)}
+          className={getLinesClasses(2)}
           x1="1454.2"
           y1="2953.2"
           x2="900.8"
           y2="3272.7"
         />
         <line
-          style={getLinesStyles(2)}
+          className={getLinesClasses(2)}
           x1="814.6"
           y1="3223"
           x2="854.9"
@@ -549,143 +530,142 @@ export function MuseumMap({ item }: { item: CollectionObjectDocument }) {
       </g>
       <g id="shadow_copy_4">
         <polygon
-          style={{ fill: '#E5E6E8' }}
           points="1895.9,2037.2 2399.9,1746.2 2206.8,1634.8 2012.8,1746.8 2066.5,1777.7 1811.9,1924.7 1662,1838.3 
             1362.4,2011.3 975.3,1787.8 938.9,1808.8 904.3,1788.8 273.8,2152.8 984.8,2563.2 1427.8,2307.5 1427.3,2307.8 	"
         />
       </g>
       <g id="_x33__zones">
         <polygon
-          style={getFillStyles('beaux-arts-court')}
+          className={getFillClasses('beaux-arts-court')}
           points="1002.1,1887.3 1077.5,1930.8 1099.1,1918.3 1399.6,2091.8 1363.3,2112.8 1438.6,2156.2 989.1,2415.7 
             536.2,2154.3 	"
         />
         <polygon
-          style={getFillStyles('beaux-arts-court-inner')}
+          className={getFillClasses('beaux-arts-court-inner')}
           points="947.6,2005.3 722.4,2135.3 722.4,2182.3 939.8,2307.8 1022.9,2307.8 1247.2,2178.2 1247.2,2137.3 
             1020.3,2006.3 	"
         />
         <polygon
-          style={getFillStyles('womans-afterlife')}
+          className={getFillClasses('womans-afterlife')}
           points="1044.3,2383.6 1155.8,2448 1100.8,2479.7 990,2415.7 	"
         />
         <polygon
-          style={getFillStyles('f3-egyptian')}
+          className={getFillClasses('f3-egyptian')}
           points="2094.2,1777.2 2207.6,1842.7 1815.3,2069.2 1869.9,2100.7 1606.6,2252.7 1550.3,2220.2 
             1156.3,2447.7 1044.6,2383.2 	"
         />
         <polygon
-          style={getFillStyles('kevorkian')}
+          className={getFillClasses('kevorkian')}
           points="1738.2,1895.8 1813.6,1939.2 1438.2,2156 1362.8,2112.5 	"
         />
         <polygon
-          style={getFillStyles('mummy-chamber')}
+          className={getFillClasses('mummy-chamber')}
           points="2263.9,1680.2 2376.5,1745.2 2207.6,1842.7 2094.2,1777.2 	"
         />
         <polygon
-          style={getFillStyles('auditorium')}
+          className={getFillClasses('auditorium')}
           points="854.2,1972 733.1,1902.1 453.9,2063.3 573.9,2132.5 	"
         />
       </g>
       <g id="_x33__drawing">
-        <path style={getLinesStyles(3)} d="M872.2,1961.3" />
+        <path className={getLinesClasses(3)} d="M872.2,1961.3" />
         <polyline
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           points="912.1,1895.3 948.9,1916.5 537.1,2154.3 1100.8,2479.7 1549.9,2220.5 	"
         />
         <polyline
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           points="1453.4,2147.3 1378.8,2104.2 1400.5,2091.8 1099.6,1918 1077.9,1930.5 1003,1887.3 1024.6,1874.8 
             899.1,1802.3 450,2061.5 574.3,2133.3 	"
         />
         <polyline
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           points="901.7,2032.3 724.1,2134.8 723.3,2179.3 741.5,2189.8 741.5,2189.8 909.5,2286.8 909.5,2286.8 
             946.7,2308.3 1024.6,2308.2 1248.9,2178.8 1248.9,2134.8 1024.6,2005.3 948.4,2005.3 938.9,2010.8 	"
         />
         <polyline
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           points="1034.6,2389.5 1454.2,2147.2 1543.4,2095.7 	"
         />
         <line
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           x1="1400.5"
           y1="2091.2"
           x2="1475.8"
           y2="2047.8"
         />
         <polyline
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           points="2198.1,1717.7 2150.5,1745.2 2093.3,1712.2 2037,1744.8 2094.2,1777.7 1813.6,1939.7 1738.2,1896.2 
             1511.3,2027.2 	"
         />
         <polyline
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           points="2215.4,1707.7 2263.1,1680.2 2375.6,1745.2 1814.5,2069.2 	"
         />
         <polyline
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           points="2235.3,1696.2 2178.2,1663.2 2121.9,1695.8 2179.1,1728.7 	"
         />
         <line
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           x1="1813.6"
           y1="1939.7"
           x2="1737.4"
           y2="1983.7"
         />
         <line
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           x1="1720.9"
           y1="1993.2"
           x2="1597.1"
           y2="2064.7"
         />
         <polyline
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           points="1682.8,1993.2 1869.9,2101.2 1606.6,2253.2 1513.1,2199.2 	"
         />
         <line
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           x1="1494.9"
           y1="2188.7"
           x2="1419.5"
           y2="2145.2"
         />
         <polyline
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           points="1383.2,2124.2 1363.3,2112.8 1378.8,2103.8 	"
         />
         <line
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           x1="1044.8"
           y1="2383.6"
           x2="1081.2"
           y2="2404.6"
         />
         <line
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           x1="1119"
           y1="2426.7"
           x2="1155.8"
           y2="2448"
         />
         <line
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           x1="1382.3"
           y1="2188.7"
           x2="1418.7"
           y2="2209.7"
         />
         <line
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           x1="1456.8"
           y1="2231.7"
           x2="1493.6"
           y2="2253"
         />
         <line
-          style={getLinesStyles(3)}
+          className={getLinesClasses(3)}
           x1="938.9"
           y1="2010.8"
           x2="901.7"
@@ -694,352 +674,351 @@ export function MuseumMap({ item }: { item: CollectionObjectDocument }) {
       </g>
       <g id="shadow_copy_3">
         <polygon
-          style={{ fill: '#E5E6E8' }}
           points="1895.9,1231.2 2399.9,940.2 2206.8,828.8 2012.8,940.8 2066.5,971.7 1811.9,1118.7 1662,1032.3 
             1362.4,1205.3 975.3,981.8 938.9,1002.8 904.3,982.8 273.8,1346.8 984.8,1757.2 1427.8,1501.5 1427.3,1501.8 	"
         />
       </g>
       <g id="_x34__zones">
         <polygon
-          style={getFillStyles('f4-decorative-arts')}
+          className={getFillClasses('f4-decorative-arts')}
           points="1399.6,1285.3 1099.1,1111.8 1082.7,1121.3 1007.3,1077.8 759.6,1220.8 834.1,1263.8 949.3,1197.3 
             1023.8,1199.3 1248.1,1328.8 1248.1,1372.8 	"
         />
         <polygon
-          style={getFillStyles('f4-decorative-arts')}
+          className={getFillClasses('f4-decorative-arts')}
           points="759.6,1220.8 835,1264.3 724.1,1328.3 725.9,1372.3 949.3,1501.3 1025.5,1501.3 1101.7,1545.2 
             879.1,1673.7 427.1,1412.8 	"
         />
         <polygon
-          style={getFillStyles('f4-igrassia')}
+          className={getFillClasses('f4-igrassia')}
           points="1101.7,1545.2 1025.5,1501.3 1248.1,1372.8 1323.4,1416.2 	"
         />
         <polygon
-          style={getFillStyles('f4-dinner-party')}
+          className={getFillClasses('f4-dinner-party')}
           points="1652.5,1226.2 1710.5,1344.7 1691.5,1355.7 1484.5,1323.2 	"
         />
         <path
-          style={getFillStyles('eascfa')}
+          className={getFillClasses('eascfa')}
           d="M1626.5,1154.3l243.4,140.5l-263.3,152l-242.9-140.2L1626.5,1154.3z M1484.5,1323.2l207,32.5l19.1-11
             l-58-118.5L1484.5,1323.2z"
         />
       </g>
       <g id="_x34__drawing">
         <polygon
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           points="2375.6,939.2 2263.1,874.2 2235.3,890.2 2178.2,857.2 2121.9,889.8 2179.1,922.7 2150.5,939.2 
             2093.3,906.2 2037,938.8 2094.2,971.7 1813.6,1133.7 1738.2,1090.2 1532.1,1209.2 1457.7,1166.3 1383.2,1209.3 1457.7,1252.2 
             1400.5,1285.2 1100,1111.8 1082.7,1121.8 1006.5,1077.8 1022.9,1068.3 905.1,1000.3 830.7,1043.3 948.4,1111.3 426.2,1412.8 
             990.9,1738.7 1551.2,1415.2 1606.6,1447.2 1869.9,1295.2 1814.5,1263.2 	"
         />
         <polygon
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           points="1024.6,1199.3 1248.9,1328.8 1248.9,1372.8 1024.6,1502.2 950.2,1502.3 725,1372.3 725,1328.8 
             952.3,1197.5 	"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="583.8"
           y1="1375.8"
           x2="943.2"
           y2="1583.2"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="978.7"
           y1="1603.7"
           x2="1025.5"
           y2="1630.7"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1063.6"
           y1="1652.7"
           x2="1100.4"
           y2="1674"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="550.1"
           y1="1356.3"
           x2="537.4"
           y2="1348.9"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="594.1"
           y1="1381.7"
           x2="556"
           y2="1403.7"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="520.6"
           y1="1424.3"
           x2="483.4"
           y2="1445.8"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="933.7"
           y1="1577.8"
           x2="895.6"
           y2="1599.8"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="860.1"
           y1="1620.2"
           x2="822.9"
           y2="1641.8"
         />
-        <path style={getLinesStyles(4)} d="M988.7,1609.5" />
+        <path className={getLinesClasses(4)} d="M988.7,1609.5" />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="999.5"
           y1="1602.7"
           x2="950.2"
           y2="1631.2"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="914.7"
           y1="1651.7"
           x2="877.4"
           y2="1673.2"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1145.5"
           y1="1519.5"
           x2="1438.6"
           y2="1350.2"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1035"
           y1="1583.2"
           x2="1112.1"
           y2="1538.7"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1212"
           y1="1609.4"
           x2="1055"
           y2="1518.7"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1156.2"
           y1="1641.7"
           x2="1044.1"
           y2="1577"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="948.4"
           y1="1111.3"
           x2="1005.6"
           y2="1144.3"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="872.6"
           y1="1155.5"
           x2="893"
           y2="1167.3"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="929.4"
           y1="1188.3"
           x2="949.3"
           y2="1199.8"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="817.7"
           y1="1252.8"
           x2="835.8"
           y2="1263.3"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="780.4"
           y1="1232.3"
           x2="760"
           y2="1220.5"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="725"
           y1="1372.3"
           x2="689.5"
           y2="1392.8"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1231.6"
           y1="1382.7"
           x2="1280.1"
           y2="1410.7"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1327.3"
           y1="1415.1"
           x2="1280.9"
           y2="1388.3"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1352.9"
           y1="1429.7"
           x2="1439.5"
           y2="1479.7"
         />
         <polyline
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           points="1157.8,1512.9 1223.1,1550.7 1335.5,1485.7 1295.7,1462.7 1314.8,1451.7 1287.9,1436.2 
             1354.6,1474.7 	"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1345.9"
           y1="1339.8"
           x2="1269.7"
           y2="1295.8"
         />
         <polyline
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           points="1400.5,1285.2 1363.3,1306.8 1383.2,1318.2 	"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1419.5"
           y1="1339.2"
           x2="1456.8"
           y2="1360.7"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1492.3"
           y1="1381.2"
           x2="1551.2"
           y2="1415.2"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1418.7"
           y1="1403.7"
           x2="1382.8"
           y2="1383"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1456.8"
           y1="1425.7"
           x2="1495.3"
           y2="1448"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1596.2"
           y1="1410.2"
           x2="1655.1"
           y2="1376.2"
         />
         <polyline
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           points="1691.5,1355.2 1484.5,1322.7 1652.5,1225.7 1710.5,1344.2 	"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1626.5"
           y1="1154.8"
           x2="1646.4"
           y2="1166.2"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1681.9"
           y1="1122.8"
           x2="1701.8"
           y2="1134.3"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1738.2"
           y1="1155.2"
           x2="1795.4"
           y2="1188.2"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1813.6"
           y1="1133.7"
           x2="1746"
           y2="1172.7"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1711.4"
           y1="1192.7"
           x2="1701.9"
           y2="1198.2"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1682.8"
           y1="1187.2"
           x2="1814.5"
           y2="1263.2"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="1831.8"
           y1="1209.2"
           x2="1869.9"
           y2="1231.2"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="2235.3"
           y1="890.2"
           x2="2215.4"
           y2="901.7"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="2179.1"
           y1="922.7"
           x2="2198.1"
           y2="911.7"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="2150.5"
           y1="939.2"
           x2="2187.7"
           y2="960.7"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="2223.2"
           y1="981.2"
           x2="2263.1"
           y2="1004.2"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="2207.2"
           y1="1036.5"
           x2="2167.4"
           y2="1013.5"
         />
         <line
-          style={getLinesStyles(4)}
+          className={getLinesClasses(4)}
           x1="2095"
           y1="971.2"
           x2="2132.3"
@@ -1048,374 +1027,373 @@ export function MuseumMap({ item }: { item: CollectionObjectDocument }) {
       </g>
       <g id="shadow_copy_2">
         <polygon
-          style={{ fill: '#E5E6E8' }}
           points="1895.9,434.2 2399.9,143.2 2206.8,31.8 2012.8,143.8 2066.5,174.7 1811.9,321.7 1662,235.3 
             1362.4,408.3 975.3,184.8 938.9,205.8 904.3,185.8 273.8,549.8 984.8,960.2 1427.8,704.5 1427.3,704.8 	"
         />
       </g>
       <g id="_x35__zones">
         <path
-          style={getFillStyles('f5-luce-center')}
+          className={getFillClasses('f5-luce-center')}
           d="M1383.2,497.8l-19.9,11.5l75.3,43.5L989.1,812.2l-452.1-261l469.4-271L1383.2,497.8z M1024.6,401.8l-72.7,0
             l-225.2,130l0,44l223.4,129l78.8,0l222.1-128.2l0-44.7L1024.6,401.8z"
         />
         <polygon
-          style={getFillStyles('luce-visible-storage')}
+          className={getFillClasses('luce-visible-storage')}
           points="876.5,876.2 482.5,648.8 593.4,584.8 987.4,812.2 	"
         />
         <polygon
-          style={getFillStyles('f5-arts-americas')}
+          className={getFillClasses('f5-arts-americas')}
           points="1155.4,845.2 1044.6,781.2 878.3,877.2 989.1,941.2 	"
         />
         <polygon
-          style={getFillStyles('f5-european-art')}
+          className={getFillClasses('f5-european-art')}
           points="1439.5,553.2 1550.3,617.2 1157.1,844.2 1046.3,780.2 	"
         />
         <polygon
-          style={getFillStyles('rotunda')}
+          className={getFillClasses('rotunda')}
           points="1626.5,357.3 1869.9,497.7 1606.6,649.7 1363.3,509.3 	"
         />
         <polygon
-          style={getFillStyles('shapiro-wing')}
+          className={getFillClasses('shapiro-wing')}
           points="2375.6,142.7 2262.2,77.2 1701.9,400.7 1815.3,466.2 	"
         />
       </g>
       <g id="_x35__drawing">
         <polyline
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           points="1382.7,498 1006.5,280.8 1022.9,271.3 905.1,203.3 830.7,246.3 948.4,314.3 426.2,615.8 
             990.9,941.7 1551.2,618.2 1606.6,650.2 1869.9,498.2 1814.5,466.2 2375.6,142.2 2263.1,77.2 2235.3,93.2 2178.2,60.2 2121.9,92.7 
             2179.1,125.7 2150.5,142.2 2093.3,109.2 2037,141.8 2094.2,174.7 1813.6,336.7 1738.2,293.3 1532.1,412.3 1457.7,369.3 
             1383.2,412.3 1457.7,455.3 1400.5,488.3 	"
         />
         <polygon
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           points="1024.6,402.3 1248.9,531.8 1248.9,575.8 1024.6,705.3 950.2,705.3 725,575.3 725,531.8 952.3,400.5 	
             "
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="537.5"
           y1="552"
           x2="943.2"
           y2="786.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="978.7"
           y1="806.7"
           x2="1025.5"
           y2="833.7"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1063.6"
           y1="855.7"
           x2="1100.4"
           y2="877"
         />
-        <path style={getLinesStyles(5)} d="M537.4,551.9" />
+        <path className={getLinesClasses(5)} d="M537.4,551.9" />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="594.1"
           y1="584.7"
           x2="482.8"
           y2="648.9"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="933.7"
           y1="780.8"
           x2="895.6"
           y2="802.8"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="860.1"
           y1="823.2"
           x2="822.9"
           y2="844.8"
         />
-        <path style={getLinesStyles(5)} d="M988.7,812.5" />
+        <path className={getLinesClasses(5)} d="M988.7,812.5" />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="999.5"
           y1="805.7"
           x2="950.2"
           y2="834.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="914.7"
           y1="854.7"
           x2="877.4"
           y2="876.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1145.5"
           y1="722.5"
           x2="1438.6"
           y2="553.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1035"
           y1="786.2"
           x2="1112.1"
           y2="741.7"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="872.6"
           y1="358.5"
           x2="893"
           y2="370.3"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="929.4"
           y1="391.3"
           x2="949.3"
           y2="402.8"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="725"
           y1="575.3"
           x2="706.4"
           y2="586"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1248.5"
           y1="572.5"
           x2="1271.9"
           y2="586"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1327.3"
           y1="618.1"
           x2="1308.2"
           y2="607"
         />
         <polyline
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           points="1400.5,488.3 1363.3,509.8 1383.2,521.2 	"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1419.5"
           y1="542.2"
           x2="1475.4"
           y2="574.5"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1513.5"
           y1="596.5"
           x2="1551.2"
           y2="618.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1418.7"
           y1="606.7"
           x2="1382.8"
           y2="586"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1456.8"
           y1="628.7"
           x2="1495.3"
           y2="651"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1626.5"
           y1="357.8"
           x2="1646.4"
           y2="369.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1681.9"
           y1="325.8"
           x2="1701.8"
           y2="337.3"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1738.2"
           y1="358.2"
           x2="1795.4"
           y2="391.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1813.6"
           y1="336.7"
           x2="1746"
           y2="375.7"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1711.4"
           y1="395.7"
           x2="1701.9"
           y2="401.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1776.3"
           y1="444.2"
           x2="1814.5"
           y2="466.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1682.8"
           y1="390.2"
           x2="1740"
           y2="423.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1831.8"
           y1="412.2"
           x2="1869.9"
           y2="434.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="2235.3"
           y1="93.2"
           x2="2215.4"
           y2="104.7"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="2179.1"
           y1="125.7"
           x2="2198.1"
           y2="114.7"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="2150.5"
           y1="142.2"
           x2="2187.7"
           y2="163.7"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="2223.2"
           y1="184.2"
           x2="2263.1"
           y2="207.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="2207.2"
           y1="239.5"
           x2="2167.4"
           y2="216.5"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="2095"
           y1="174.2"
           x2="2132.3"
           y2="195.7"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="950.2"
           y1="705.3"
           x2="932"
           y2="715.8"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="894.7"
           y1="737.3"
           x2="877"
           y2="747.5"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1024.6"
           y1="705.3"
           x2="1044.6"
           y2="716.8"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1079.2"
           y1="736.7"
           x2="1099.1"
           y2="748.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1044.6"
           y1="780.7"
           x2="1081.8"
           y2="802.2"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1117.3"
           y1="821.7"
           x2="1156.6"
           y2="844.4"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1249.8"
           y1="705.2"
           x2="1213"
           y2="684"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1287"
           y1="726.7"
           x2="1325.1"
           y2="748.7"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1605.7"
           y1="432.7"
           x2="1647.3"
           y2="432.7"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1493.2"
           y1="497.7"
           x2="1493.2"
           y2="522.7"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1583.2"
           y1="574.7"
           x2="1626.5"
           y2="574.7"
         />
         <line
-          style={getLinesStyles(5)}
+          className={getLinesClasses(5)}
           x1="1739.1"
           y1="509.7"
           x2="1739.1"
           y2="485.7"
         />
       </g>
-      <g id="elevator">
+      <g id="elevator" className="fill-neutral-800 dark:fill-neutral-300">
         <g>
           <path d="M173,3838.7h-46.2v-91.2H90.6v-31.5c24.4-0.4,42.2-8.9,47.3-36H173V3838.7z" />
         </g>
