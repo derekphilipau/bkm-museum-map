@@ -21,7 +21,10 @@ export default function Page() {
           {name}
         </p>
       </div>
-      <div className="flex gap-4">
+      <div className="">
+        <h3 className="mb-4 text-lg font-semibold text-neutral-700 dark:text-neutral-400 sm:text-xl">
+          TMS Museum Locations
+        </h3>
         <ul>
           {galleries.map((gallery) => (
             <li

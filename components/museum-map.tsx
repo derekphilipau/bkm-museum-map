@@ -4,170 +4,142 @@
 
 export const galleries = [
   {
-    id: 'pavilion',
-    imgId: 'f1-pavilion',
+    id: 'f1-pavilion',
     name: 'Martha A. and Robert S. Rubin Pavilion, 1st Floor',
     floor: 1,
   },
   {
-    id: 'islamic',
-    imgId: 'f2-arts-islamic',
+    id: 'f2-arts-islamic',
     name: 'Arts of the Islamic World, 2nd floor',
     floor: 2,
   },
   {
-    id: 'asian-west',
-    imgId: 'f2-arts-asia',
+    id: 'f2-arts-asia',
     name: 'Asian Galleries, West, 2nd floor (China)',
     floor: 2,
   },
   {
-    id: 'south-asia',
-    imgId: 'f2-arts-asia',
+    id: 'f2-arts-asia',
     name: 'Asian Galleries, Arts of South Asia, 2nd floor',
     floor: 2,
   },
   {
-    id: 'asia-south',
-    imgId: 'f2-arts-asia',
+    id: 'f2-arts-asia',
     name: 'Asian Galleries, South, 2nd floor',
     floor: 2,
   },
   {
-    id: 'asian-southwest',
-    imgId: 'f2-arts-asia',
+    id: 'f2-arts-asia',
     name: 'Asian Galleries, Southwest, 2nd floor',
     floor: 2,
   },
   {
-    id: 'asian-japan',
-    imgId: 'f2-arts-asia',
+    id: 'f2-arts-asia',
     name: 'Asian Galleries, Arts of Japan, 2nd floor',
     floor: 2,
   },
   {
-    id: 'asian-japan-north',
-    imgId: 'f2-arts-asia',
+    id: 'f2-arts-asia',
     name: 'Asian Galleries, North, 2nd floor (Japan)',
     floor: 2,
   },
   {
-    id: 'orientation',
-    imgId: 'f3-egyptian',
+    id: 'f3-egyptian',
     name: 'Egyptian Orientation Gallery, 3rd Floor',
     floor: 3,
   },
   {
-    id: 'rubin-roman',
-    imgId: 'f3-egyptian',
+    id: 'f3-egyptian',
     name: '19th Dynasty to Roman Period, Martha A. and Robert S. Rubin Gallery, 3rd Floor',
     floor: 3,
   },
   {
-    id: 'egyptian',
-    imgId: 'f3-egyptian',
+    id: 'f3-egyptian',
     name: 'Old Kingdom to 18th Dynasty, Egyptian Galleries, 3rd Floor',
     floor: 3,
   },
   {
-    id: 'funerary-2',
-    imgId: 'f3-mummy-chamber',
+    id: 'f3-mummy-chamber',
     name: 'Funerary Gallery 2, Martha A. and Robert S. Rubin Gallery, 3rd Floor',
     floor: 3,
   },
   {
-    id: 'funerary-3',
-    imgId: 'f3-mummy-chamber',
+    id: 'f3-mummy-chamber',
     name: 'Funerary Gallery 3, Martha A. and Robert S. Rubin Gallery, 3rd Floor',
     floor: 3,
   },
   {
-    id: 'rubin-amarna',
-    imgId: 'f3-egyptian',
+    id: 'f3-egyptian',
     name: 'Amarna Period, Martha A. and Robert S. Rubin Gallery, 3rd Floor',
     floor: 3,
   },
   {
-    id: 'decorative-19th',
-    imgId: 'f4-decorative-arts',
+    id: 'f4-decorative-arts',
     name: 'Decorative Art, 19th Century, 4th Floor',
     floor: 4,
   },
   {
-    id: 'igrassia',
-    imgId: 'f4-igrassia',
+    id: 'f4-igrassia',
     name: 'Contemporary Art, North Gallery',
     floor: 4,
   },
   {
-    id: 'cupola',
-    imgId: 'f4-decorative-arts',
+    id: 'f4-decorative-arts',
     name: 'Cupola House, Pantry and Dining Decorative Art, Hall, 4th Floor',
     floor: 4,
   },
   {
-    id: 'decorative-20th',
-    imgId: 'f4-decorative-arts',
+    id: 'f4-decorative-arts',
     name: 'Decorative Art, 20th-Century Decorative Arts, 4th Floor',
     floor: 4,
   },
   {
-    id: 'decorative',
-    imgId: 'f4-decorative-arts',
+    id: 'f4-decorative-arts',
     name: 'Decorative Art, 4th Floor',
     floor: 4,
   },
   {
-    id: 'f4-dinner-party',
-    imgId: 'f4-decorative-arts',
+    id: 'f4-decorative-arts',
     name: 'Elizabeth A. Sackler Center for Feminist Art, 4th Floor',
     floor: 4,
   },
   {
-    id: 'luce',
-    imgId: 'f5-luce-center',
+    id: 'f5-luce-center',
     name: 'Luce Visible Storage and Study Center, 5th Floor',
     floor: 5,
   },
   {
-    id: 'european',
-    imgId: 'f5-european-art',
+    id: 'f5-european-art',
     name: 'European Art Galleries, 5th floor',
     floor: 5,
   },
   {
-    id: 'americas',
-    imgId: 'f5-arts-americas',
+    id: 'f5-arts-americas',
     name: 'Arts of the Americas Galleries, 5th Floor',
     floor: 5,
   },
   {
-    id: 'americas-colonies',
-    imgId: 'f5-arts-americas',
+    id: 'f5-arts-americas',
     name: 'American Art Galleries, 5th Floor, From Colonies to States, 1660–1830',
     floor: 5,
   },
   {
-    id: 'americas-colonies',
-    imgId: 'f5-arts-americas',
+    id: 'f5-arts-americas',
     name: 'American Art Galleries, 5th Floor, Imagining the New Nation’s Landscape, 1800–1880',
     floor: 5,
   },
   {
-    id: 'americas-colonies',
-    imgId: 'f5-arts-americas',
+    id: 'f5-arts-americas',
     name: 'American Art Galleries, 5th Floor, The City and the Rise of the Modern Woman, 1900–1945',
     floor: 5,
   },
   {
-    id: 'americas-colonies',
-    imgId: 'f5-arts-americas',
+    id: 'f5-arts-americas',
     name: 'American Art Galleries, 5th Floor, Beyond Borders and Boundaries, 20th and 21st Centuries',
     floor: 5,
   },
   {
-    id: 'european',
-    imgId: 'rotunda',
+    id: 'rotunda',
     name: 'Special Exhibition Gallery, 5th Floor',
     floor: 5,
   },
@@ -181,20 +153,20 @@ export function MuseumMap({ locationName }: { locationName: string }) {
   if (!gallery) return null;
 
   const myFloor = gallery.floor;
-  const myLocation = gallery.imgId;
+  const myLocation = gallery.id;
 
   function getLinesClasses(floor: number): string {
     if (floor === myFloor) {
-      return 'fill-none stroke-red-300 dark:stroke-red-800 stroke-[14px]';
+      return 'fill-none stroke-red-300 dark:stroke-red-500 stroke-[14px]';
     }
-    return 'fill-none stroke-neutral-300 stroke-[14px] dark:stroke-neutral-800';
+    return 'fill-none stroke-neutral-300 stroke-[14px] dark:stroke-neutral-400';
   }
 
   function getFillClasses(location: string): string {
     if (location === myLocation) {
-      return 'fill-red-500';
+      return 'fill-red-600';
     }
-    return 'fill-neutral-100 dark:fill-neutral-950';
+    return 'fill-neutral-100 dark:fill-neutral-500';
   }
 
   return (
@@ -204,7 +176,7 @@ export function MuseumMap({ locationName }: { locationName: string }) {
       x="0px"
       y="0px"
       viewBox="0 0 2451 4215"
-      className="h-full fill-neutral-100 dark:fill-neutral-950"
+      className="h-full fill-neutral-100 dark:fill-neutral-500"
     >
       <g id="shadow">
         <path
